@@ -73,11 +73,11 @@ Fully map the codebase into `docs/reference/`. Also update roadmap statuses for 
 
 **Completeness requirement:** Sync must resolve ALL findings before completing. Do not defer undocumented systems, stale docs, or partial docs to "a future sync." Every implemented system must have a corresponding reference doc when sync finishes. If the scope is large, batch the work — but finish it in this run.
 
-### 1. Bootstrap (if needed)
+### 1. Ensure structure
 
-If `docs/README.md` is missing:
+Runs every sync to keep the folder structure intact. Idempotent — creates what's missing, leaves everything else alone. Never overwrites or removes existing files or folders.
 
-1. Create:
+1. Ensure all folders exist (create any that are missing):
 
 ```
 docs/
@@ -97,7 +97,7 @@ docs/
 └── logs/
 ```
 
-2. Create `docs/README.md` with:
+2. If `docs/README.md` is missing, create it with:
    - A short purpose line for `docs/`
    - Folder purposes and structure description
    - Naming/date/append-only conventions from Global Rules
@@ -105,8 +105,6 @@ docs/
 3. If `AGENTS.md` and/or `CLAUDE.md` exist but lack docs guidance, add a short section:
    - `docs/` is the project memory system. See `docs/README.md` for structure and conventions.
    - Update relevant docs when behavior, architecture, or workflows change.
-
-After bootstrap, continue to audit and sync in the same run. First-run `/docs sync` must not stop at folder creation.
 
 ### 2. Audit docs vs code
 
