@@ -19,7 +19,7 @@ Match the first argument to the corresponding section below.
 - `docs/reference/` = **what exists in the codebase**. Sync writes here.
 - `docs/roadmap/` = **what should exist but doesn't yet**. Research writes here. Organized by status.
 - `docs/decisions/` = decision records. Any command can create these.
-- `docs/logs/` = chronological work history. Work writes here.
+- `docs/logs/` = chronological record of all agent work and decisions. Any command writes here after completing substantial work. Exists so every dev in a shared repo can see what agents did and why.
 
 ## Rule Levels
 
@@ -48,15 +48,16 @@ Match the first argument to the corresponding section below.
 3. **Naming + date rules**
    - `reference/*` → `kebab-case.md`
    - `roadmap/**`, `decisions/` → `YYYY-MM-DD-kebab-case.md`
-   - `logs/` → `YYYY-MM.md` monthly logs
+   - `logs/` → `YYYY-MM-DD-kebab-task-name.md` per-task logs
    - Dates must be zero-padded ISO 8601: `YYYY-MM-DD`.
 4. **Append-only history** — for `logs/` and `decisions/`, add new files instead of rewriting history.
-5. **Roadmap status lifecycle** — track status by moving docs between roadmap folders:
+5. **Log after every complete piece of work** — whenever an agent finishes substantial work (pushing a PR, completing a sync, finalizing a research recommendation, shipping a feature), create a log entry at `docs/logs/YYYY-MM-DD-kebab-task-name.md`. The log captures what was done, decisions made, and rationale — so every developer in the repo can reconstruct what agents did and why.
+6. **Roadmap status lifecycle** — track status by moving docs between roadmap folders:
    - `proposed/` → `in-progress/` → `completed/`
    - Items that won't be built go to `archived/` with a note explaining why (superseded, rejected, deprioritized)
    - Every roadmap doc must still have a `## Status` line for quick context (e.g., `Proposed`, `In Progress`, `Completed (YYYY-MM-DD)`, `Archived — superseded by [link]`)
-6. **Policy files** — if `AGENTS.md` and/or `CLAUDE.md` exist, keep their docs-memory guidance aligned.
-7. **Conflict behavior** — if repository conventions conflict with these defaults, do not rewrite conventions silently. Report the mismatch and ask the user before changing direction.
+7. **Policy files** — if `AGENTS.md` and/or `CLAUDE.md` exist, keep their docs-memory guidance aligned.
+8. **Conflict behavior** — if repository conventions conflict with these defaults, do not rewrite conventions silently. Report the mismatch and ask the user before changing direction.
 
 ## Global Rules (recommended)
 
@@ -102,9 +103,9 @@ docs/
    - Folder purposes and structure description
    - Naming/date/append-only conventions from Global Rules
 
-3. If `AGENTS.md` and/or `CLAUDE.md` exist but lack docs guidance, add a short section:
-   - `docs/` is the project memory system. See `docs/README.md` for structure and conventions.
-   - Update relevant docs when behavior, architecture, or workflows change.
+3. If `AGENTS.md` and/or `CLAUDE.md` exist but lack docs guidance, add a brief section:
+   - `docs/` is the project memory system. See `docs/README.md` for conventions.
+   - After substantial work (PR, feature, refactor), log what you did and why to `docs/logs/YYYY-MM-DD-task-name.md`.
 
 ### 2. Audit docs vs code
 
@@ -149,6 +150,7 @@ When `/docs sync` completes, return all of:
 
 3. **Summary** — counts by status (stale fixed, partial filled, undocumented created, roadmap updated)
 4. **Docs changes made** — list updated/created/moved paths, or `none`
+5. **Log entry** — create `docs/logs/YYYY-MM-DD-sync.md` capturing what was synced, key findings, and decisions
 
 ---
 
@@ -233,6 +235,7 @@ When `/docs research` completes, return all of:
 2. **Recommended item** (`#<n>` + one-sentence reason)
 3. If formalized: **roadmap doc path**, **open questions**
 4. **Next command** suggestion (`/docs work <path>` or another `/docs research` for a different domain)
+5. **Log entry** — create `docs/logs/YYYY-MM-DD-research-<topic>.md` capturing what was investigated, candidates considered, and the recommendation rationale
 
 ---
 
@@ -266,7 +269,7 @@ After implementation is complete:
 
 - **Update reference docs** — create or update `docs/reference/` docs to reflect the new code (features, architecture, conventions, runbooks, pitfalls as appropriate)
 - **Update roadmap doc** — move to `completed/` and update `## Status` to `Completed (YYYY-MM-DD)`, or move to `completed/` with `Partially Completed (YYYY-MM-DD)` and notes on what remains
-- **Log entry** — append a summary to `docs/logs/YYYY-MM.md`
+- **Log entry** — create `docs/logs/YYYY-MM-DD-kebab-task-name.md` capturing what was done, key decisions made, and why
 
 ### Output Contract (required)
 
