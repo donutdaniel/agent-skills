@@ -16,10 +16,10 @@ Match the first argument to the corresponding section below.
 
 ## Core Model
 
-- `docs/reference/` = **what exists in the codebase**. Sync writes here.
-- `docs/roadmap/` = **what should exist but doesn't yet**. Research writes here. Organized by status.
-- `docs/decisions/` = decision records. Any command can create these.
-- `docs/logs/` = chronological record of all agent work and decisions. Any command writes here after completing substantial work. Exists so every dev in a shared repo can see what agents did and why.
+- `.docs/reference/` = **what exists in the codebase**. Sync writes here.
+- `.docs/roadmap/` = **what should exist but doesn't yet**. Research writes here. Organized by status.
+- `.docs/decisions/` = decision records. Any command can create these.
+- `.docs/logs/` = chronological record of all agent work and decisions. Any command writes here after completing substantial work. Exists so every dev in a shared repo can see what agents did and why.
 
 ## Rule Levels
 
@@ -29,18 +29,18 @@ Match the first argument to the corresponding section below.
 ## Global Rules (required)
 
 1. **Command contract** — only `sync`, `research`, `work`.
-2. **Docs root + folder contract** — this skill manages `docs/` with only these top-level folders:
-   - `docs/reference/`
-   - `docs/roadmap/`
-   - `docs/decisions/`
-   - `docs/logs/`
-   - Inside `docs/reference/`, use:
+2. **Docs root + folder contract** — this skill manages `.docs/` with only these top-level folders:
+   - `.docs/reference/`
+   - `.docs/roadmap/`
+   - `.docs/decisions/`
+   - `.docs/logs/`
+   - Inside `.docs/reference/`, use:
      - `features/`
      - `architecture/`
      - `conventions/`
      - `runbooks/`
      - `pitfalls/`
-   - Inside `docs/roadmap/`, use status folders:
+   - Inside `.docs/roadmap/`, use status folders:
      - `proposed/` — ideas formalized, not started
      - `in-progress/` — actively being worked on
      - `completed/` — fully shipped
@@ -51,7 +51,7 @@ Match the first argument to the corresponding section below.
    - `logs/` → `YYYY-MM-DD-kebab-task-name.md` per-task logs
    - Dates must be zero-padded ISO 8601: `YYYY-MM-DD`.
 4. **Append-only history** — for `logs/` and `decisions/`, add new files instead of rewriting history.
-5. **Log after every complete piece of work** — whenever an agent finishes substantial work (pushing a PR, completing a sync, finalizing a research recommendation, shipping a feature), create a log entry at `docs/logs/YYYY-MM-DD-kebab-task-name.md`. The log captures what was done, decisions made, and rationale — so every developer in the repo can reconstruct what agents did and why.
+5. **Log after every complete piece of work** — whenever an agent finishes substantial work (pushing a PR, completing a sync, finalizing a research recommendation, shipping a feature), create a log entry at `.docs/logs/YYYY-MM-DD-kebab-task-name.md`. The log captures what was done, decisions made, and rationale — so every developer in the repo can reconstruct what agents did and why.
 6. **Roadmap status lifecycle** — track status by moving docs between roadmap folders:
    - `proposed/` → `in-progress/` → `completed/`
    - Items that won't be built go to `archived/` with a note explaining why (superseded, rejected, deprioritized)
@@ -70,7 +70,7 @@ Match the first argument to the corresponding section below.
 
 ## sync
 
-Fully map the codebase into `docs/reference/`. Also update roadmap statuses for shipped work.
+Fully map the codebase into `.docs/reference/`. Also update roadmap statuses for shipped work.
 
 **Completeness requirement:** Sync must resolve ALL findings before completing. Do not defer undocumented systems, stale docs, or partial docs to "a future sync." Every implemented system must have a corresponding reference doc when sync finishes. If the scope is large, batch the work — but finish it in this run.
 
@@ -81,7 +81,7 @@ Runs every sync to keep the folder structure intact. Idempotent — creates what
 1. Ensure all folders exist (create any that are missing):
 
 ```
-docs/
+.docs/
 ├── README.md
 ├── reference/
 │   ├── features/
@@ -98,18 +98,18 @@ docs/
 └── logs/
 ```
 
-2. If `docs/README.md` is missing, create it with:
-   - A short purpose line for `docs/`
+2. If `.docs/README.md` is missing, create it with:
+   - A short purpose line for `.docs/`
    - Folder purposes and structure description
    - Naming/date/append-only conventions from Global Rules
 
 3. If `AGENTS.md` and/or `CLAUDE.md` exist but lack docs guidance, add a brief section:
-   - `docs/` is the project memory system. See `docs/README.md` for conventions.
-   - After substantial work (PR, feature, refactor), log what you did and why to `docs/logs/YYYY-MM-DD-task-name.md`.
+   - `.docs/` is the project memory system. See `.docs/README.md` for conventions.
+   - After substantial work (PR, feature, refactor), log what you did and why to `.docs/logs/YYYY-MM-DD-task-name.md`.
 
 ### 2. Audit docs vs code
 
-1. Read `docs/README.md`, then review all files under `docs/reference/`, `docs/roadmap/`, `docs/decisions/`, and `docs/logs/`.
+1. Read `.docs/README.md`, then review all files under `.docs/reference/`, `.docs/roadmap/`, `.docs/decisions/`, and `.docs/logs/`.
 2. Use repository search to check what exists in code (schema, services, routes, UI, jobs, APIs).
 3. Compare every reference doc against current code for accuracy.
 4. Identify implemented systems that have no reference doc.
@@ -150,7 +150,7 @@ When `/docs sync` completes, return all of:
 
 3. **Summary** — counts by status (stale fixed, partial filled, undocumented created, roadmap updated)
 4. **Docs changes made** — list updated/created/moved paths, or `none`
-5. **Log entry** — create `docs/logs/YYYY-MM-DD-sync.md` capturing what was synced, key findings, and decisions
+5. **Log entry** — create `.docs/logs/YYYY-MM-DD-sync.md` capturing what was synced, key findings, and decisions
 
 ---
 
@@ -171,12 +171,12 @@ Work through these lenses. Not all will apply to every product — use what's re
 - Look for frequently requested capabilities or common complaints
 
 **Pain** — What's broken or frustrating?
-- Check `docs/reference/pitfalls/` and `docs/reference/runbooks/` for recurring operational pain
+- Check `.docs/reference/pitfalls/` and `.docs/reference/runbooks/` for recurring operational pain
 - Look at bug reports, incident history, and support escalations
 
 **Strategy** — What's the current direction?
-- Read `docs/roadmap/` for existing plans and their statuses
-- Read `docs/reference/features/` for gaps, limitations, and natural next steps
+- Read `.docs/roadmap/` for existing plans and their statuses
+- Read `.docs/reference/features/` for gaps, limitations, and natural next steps
 - Consider business goals and priorities the user has communicated
 
 **Landscape** — What's happening externally?
@@ -216,7 +216,7 @@ Use this exact header:
 
 Once the user picks an item (or accepts the recommendation):
 
-1. Create a roadmap doc at `docs/roadmap/proposed/YYYY-MM-DD-slug.md`
+1. Create a roadmap doc at `.docs/roadmap/proposed/YYYY-MM-DD-slug.md`
 2. Required sections:
    - Opening line (plain-language summary of the problem)
    - Status (`Proposed`)
@@ -235,7 +235,7 @@ When `/docs research` completes, return all of:
 2. **Recommended item** (`#<n>` + one-sentence reason)
 3. If formalized: **roadmap doc path**, **open questions**
 4. **Next command** suggestion (`/docs work <path>` or another `/docs research` for a different domain)
-5. **Log entry** — create `docs/logs/YYYY-MM-DD-research-<topic>.md` capturing what was investigated, candidates considered, and the recommendation rationale
+5. **Log entry** — create `.docs/logs/YYYY-MM-DD-research-<topic>.md` capturing what was investigated, candidates considered, and the recommendation rationale
 
 ---
 
@@ -246,7 +246,7 @@ Execute a roadmap item. Build it, then close the loop in docs.
 ### 1. Understand task
 
 - If user gives a roadmap doc path, read it first
-- If user gives a description, find the related roadmap doc in `docs/roadmap/`
+- If user gives a description, find the related roadmap doc in `.docs/roadmap/`
 - If no roadmap doc exists, ask: should we create one first (`/docs research`) or proceed directly?
 - If ambiguous, clarify scope briefly
 - Move the roadmap doc to `in-progress/` if it's still in `proposed/`
@@ -267,9 +267,9 @@ Execute a roadmap item. Build it, then close the loop in docs.
 
 After implementation is complete:
 
-- **Update reference docs** — create or update `docs/reference/` docs to reflect the new code (features, architecture, conventions, runbooks, pitfalls as appropriate)
+- **Update reference docs** — create or update `.docs/reference/` docs to reflect the new code (features, architecture, conventions, runbooks, pitfalls as appropriate)
 - **Update roadmap doc** — move to `completed/` and update `## Status` to `Completed (YYYY-MM-DD)`, or move to `completed/` with `Partially Completed (YYYY-MM-DD)` and notes on what remains
-- **Log entry** — create `docs/logs/YYYY-MM-DD-kebab-task-name.md` capturing what was done, key decisions made, and why
+- **Log entry** — create `.docs/logs/YYYY-MM-DD-kebab-task-name.md` capturing what was done, key decisions made, and why
 
 ### Output Contract (required)
 
