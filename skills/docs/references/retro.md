@@ -21,56 +21,25 @@ Read docs within the period from:
 - `.docs/decisions/` — decision records
 - `.docs/roadmap/completed/` — items shipped during the period
 - `.docs/roadmap/archived/` — items abandoned during the period
+- `.docs/retros/` — read the most recent retro (if one exists) for context on prior concerns and actions
 
-### 3. Analyze through lenses
+### 3. Analyze and write retro
 
-When the period contains **more than 15 logs**, spawn parallel subagents — one per lens — to analyze concurrently. Otherwise, work through them sequentially.
+Look at the gathered history and surface what's interesting. Organize findings into these sections:
 
-Skip any lens that has no signal:
+- **Wins** — What went well, approaches worth repeating.
+- **Concerns** — What didn't go well, what's fragile or being worked around.
+- **Observations** — Trends, shifts, or patterns that aren't good or bad yet but worth tracking.
+- **Actions** — Concrete next steps, what to do differently.
 
-**Work patterns** — What kind of work dominates?
-- Categorize logs: feature, bugfix, refactor, debt paydown, docs, infrastructure
-- Is the team building or firefighting? What's the ratio?
+Use these exact words as section headers in the retro doc for consistency. Skip any section that has no signal. Follow the data — if the history points somewhere unexpected, follow that instead. Reference specific logs or decisions when it adds clarity, but keep it readable — don't turn every bullet into a citation dump.
 
-**Hotspots** — What areas keep getting touched?
-- Identify files, systems, or domains that appear across multiple logs
-- Repeated work in the same area signals something unresolved — a missing abstraction, unclear ownership, or chronic instability
-
-**Decision drift** — Are decisions holding?
-- Look for decisions that got revisited, reversed, or contradicted by later work
-- Patterns here suggest missing context at decision time or changing constraints that weren't tracked
-
-**Roadmap health** — How well do plans turn into shipped work?
-- Ratio of completed vs archived items
-- Items that sat in `proposed/` or `in-progress/` for a long time — what blocked them?
-- Patterns in what gets abandoned (too ambitious, wrong timing, dependencies)
-
-**Recurring pitfalls** — What keeps going wrong?
-- Cross-reference logs for repeated issues, workarounds, or similar mistakes
-- Check if existing pitfall docs cover these, or if new ones are needed
-
-**Wins** — What worked well?
-- Patterns that led to smooth, successful work
-- Approaches worth promoting to conventions or repeating
-
-### 4. Synthesize
-
-Findings can be insights, observations, or recommendations — not everything needs an action item. An interesting pattern or a shift in what the team is working on is worth surfacing even if there's nothing to "do" about it.
-
-When a finding does warrant a recommendation, cite the specific logs, decisions, or roadmap items that support it. Don't force recommendations where the evidence isn't there.
+Write the retro to `.docs/retros/YYYY-MM-DD.md` (or `.docs/retros/YYYY-MM-DD-<topic>.md` if scoped to a topic).
 
 ### Output Contract (required)
 
-When `/docs retro` completes, return all of:
+When `/docs retro` completes, return:
 
-1. **Period covered** — date range of logs analyzed, total count of logs/decisions reviewed
-2. **Findings table** with this exact header:
-
-```
-| Lens | Finding | Evidence | Takeaway |
-|------|---------|----------|----------|
-```
-
-3. **Key takeaways** — the most interesting or impactful findings, whether insights or action items
-4. **Retro doc** — create `.docs/retros/YYYY-MM-DD.md` (or `.docs/retros/YYYY-MM-DD-<topic>.md` if scoped to a specific topic) capturing the full analysis
-5. **Follow-ups** — suggested next commands (e.g., `/docs research` for a surfaced issue, `/docs sync` if reference docs need updating)
+1. **Period covered** — date range and count of docs reviewed
+2. **Summary** — key findings from each section
+3. **Retro doc path**
