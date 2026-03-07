@@ -36,7 +36,8 @@ The skill manages a `.docs/` folder in your project:
 │   ├── completed/
 │   └── archived/
 ├── decisions/        # Decision records
-└── logs/             # Chronological work history
+├── logs/             # Chronological work history
+└── retros/           # Retrospective analyses
 ```
 
 - **`sync`** audits every reference doc against current code, fixes stale/partial docs, creates docs for undocumented systems, and moves shipped roadmap items to `completed/`. It resolves everything in one run.

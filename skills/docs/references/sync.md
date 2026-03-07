@@ -25,7 +25,8 @@ Runs every sync to keep the folder structure intact. Idempotent — creates what
 │   ├── completed/
 │   └── archived/
 ├── decisions/
-└── logs/
+├── logs/
+└── retros/
 ```
 
 2. If `.docs/README.md` is missing, create it with this exact content:
@@ -52,7 +53,8 @@ Project memory system. Code is ground truth — these docs capture context that 
 │   ├── completed/         # Fully shipped
 │   └── archived/          # Superseded, rejected, or deprioritized
 ├── decisions/             # Decision records (append-only)
-└── logs/                  # Chronological work history (append-only, per-task)
+├── logs/                  # Chronological work history (append-only, per-task)
+└── retros/                # Retrospective analyses (append-only)
 ```
 
 ## Conventions
@@ -61,7 +63,7 @@ Project memory system. Code is ground truth — these docs capture context that 
 - **`roadmap/**`**, **`decisions/`** use `YYYY-MM-DD-kebab-case.md`
 - **`logs/`** uses `YYYY-MM-DD-kebab-task-name.md` per-task files
 - Dates are zero-padded ISO 8601: `YYYY-MM-DD`
-- `logs/` and `decisions/` are **append-only** — add new files, don't rewrite history
+- `logs/`, `retros/`, and `decisions/` are **append-only** — add new files, don't rewrite history
 - Roadmap status lifecycle: `proposed/` → `in-progress/` → `completed/` (or → `archived/`)
 - Code is ground truth — docs point to code, not the other way around
 

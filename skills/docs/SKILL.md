@@ -18,7 +18,8 @@ Project memory system. Pick an action:
 - `.docs/reference/` = **what exists in the codebase**. Sync writes here.
 - `.docs/roadmap/` = **what should exist but doesn't yet**. Research writes here. Organized by status.
 - `.docs/decisions/` = decision records. Any command can create these.
-- `.docs/logs/` = chronological record of all agent work and decisions. Any command writes here after completing substantial work. Retro reads here to surface patterns. Exists so every dev in a shared repo can see what agents did and why.
+- `.docs/logs/` = chronological record of all agent work and decisions. Any command writes here after completing substantial work. Exists so every dev in a shared repo can see what agents did and why.
+- `.docs/retros/` = retrospective analyses. Retro writes here. Separate from logs so analytical summaries don't get buried in work history.
 
 ## Rule Levels
 
@@ -33,6 +34,7 @@ Project memory system. Pick an action:
    - `.docs/roadmap/`
    - `.docs/decisions/`
    - `.docs/logs/`
+   - `.docs/retros/`
    - Inside `.docs/reference/`, use:
      - `features/`
      - `architecture/`
@@ -49,7 +51,7 @@ Project memory system. Pick an action:
    - `roadmap/**`, `decisions/` → `YYYY-MM-DD-kebab-case.md`
    - `logs/` → `YYYY-MM-DD-kebab-task-name.md` per-task logs
    - Dates must be zero-padded ISO 8601: `YYYY-MM-DD`.
-4. **Append-only history** — for `logs/` and `decisions/`, add new files instead of rewriting history.
+4. **Append-only history** — for `logs/`, `retros/`, and `decisions/`, add new files instead of rewriting history.
 5. **Log after every complete piece of work** — whenever an agent finishes substantial work (pushing a PR, completing a sync, finalizing a research recommendation, shipping a feature), create a log entry at `.docs/logs/YYYY-MM-DD-kebab-task-name.md`. The log captures what was done, decisions made, and rationale — so every developer in the repo can reconstruct what agents did and why.
 6. **Roadmap status lifecycle** — track status by moving docs between roadmap folders:
    - `proposed/` → `in-progress/` → `completed/`
