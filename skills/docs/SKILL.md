@@ -8,7 +8,7 @@ argument-hint: <sync|research|work|retro> [topic or doc path]
 
 Project memory system. Pick an action:
 
-- **`/docs sync`** — Map codebase to references, update roadmap statuses
+- **`/docs sync`** — Map codebase to references, update roadmap statuses. Use `/docs sync structure` to only rebuild the folder layout.
 - **`/docs research`** — Discover and formalize what to build next into a roadmap doc
 - **`/docs work`** — Execute a roadmap item, then update references
 - **`/docs retro`** — Analyze logs and decisions over a time period for patterns, wins, and recurring issues

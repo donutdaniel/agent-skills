@@ -2,7 +2,9 @@
 
 Fully map the codebase into `.docs/reference/`. Also update roadmap statuses for shipped work.
 
-**Completeness requirement:** Sync must resolve ALL findings before completing. Do not defer undocumented systems, stale docs, or partial docs to "a future sync." Every implemented system must have a corresponding reference doc when sync finishes. If the scope is large, batch the work — but finish it in this run.
+**Subcommand:** `/docs sync structure` — runs only step 1 (ensure structure), then stops. Skips the full codebase audit. Use this when you just need to fix or recreate the `.docs/` folder layout.
+
+**Completeness requirement:** When running a full sync, it must resolve ALL findings before completing. Do not defer undocumented systems, stale docs, or partial docs to "a future sync." Every implemented system must have a corresponding reference doc when sync finishes. If the scope is large, batch the work — but finish it in this run.
 
 ### 1. Ensure structure
 
