@@ -28,7 +28,7 @@ After implementation is complete:
 
 - **Update reference docs** — create or update `.docs/reference/` docs to reflect the new code (features, architecture, conventions, runbooks, pitfalls as appropriate)
 - **Update roadmap doc** — move to `completed/` and update `## Status` to `Completed (YYYY-MM-DD)`, or move to `completed/` with `Partially Completed (YYYY-MM-DD)` and notes on what remains
-- **Log entry** — create `.docs/logs/YYYY-MM-DD-kebab-task-name.md` capturing what was done, key decisions made, and why
+- **Log entry** — append to an existing log for the same scope of work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-kebab-task-name.md` if none exists. Captures what was done, key decisions made, and why
 
 ### Output Contract (required)
 
