@@ -55,7 +55,7 @@ Project memory system. Code is ground truth — these docs capture context that 
 │   ├── completed/         # Fully shipped
 │   └── archived/          # Superseded, rejected, or deprioritized
 ├── decisions/             # Decision records (append-only)
-├── logs/                  # Chronological work history (one log per scope of work)
+├── logs/                  # Chronological work history (one log per day per scope)
 └── retros/                # Retrospective analyses (append-only)
 ```
 
@@ -63,10 +63,9 @@ Project memory system. Code is ground truth — these docs capture context that 
 
 - **`reference/*`** uses `kebab-case.md`
 - **`roadmap/**`**, **`decisions/`** use `YYYY-MM-DD-kebab-case.md`
-- **`logs/`** uses `YYYY-MM-DD-kebab-task-name.md` — one file per scope of work (branch/PR), append dated sections for iterations
+- **`logs/`** uses `YYYY-MM-DD-kebab-task-name.md` — one file per day per scope of work. Same-day iterations append; a new day always starts a new file
 - Dates are zero-padded ISO 8601: `YYYY-MM-DD`
 - `retros/` and `decisions/` are **append-only** — add new files, don't rewrite history
-- `logs/` are **append-within** — one file per scope of work, append `---` + dated section headers for iterations (on the default branch, each session creates a new log)
 - Roadmap status lifecycle: `proposed/` → `in-progress/` → `completed/` (or → `archived/`)
 - Code is ground truth — docs point to code, not the other way around
 
@@ -84,7 +83,7 @@ Managed via `/docs` skill:
 ```
 ## Project Memory
 
-`.docs/` is the project memory system — see `.docs/README.md` for conventions. Use the `/docs` skill to manage it (`sync`, `research`, `work`, `retro`). After substantial work, append to an existing log for the same scope of work (see Global Rule 5) (or create `.docs/logs/YYYY-MM-DD-task-name.md` if none exists).
+`.docs/` is the project memory system — see `.docs/README.md` for conventions. Use the `/docs` skill to manage it (`sync`, `research`, `work`, `retro`). After substantial work, append to a same-day log for the same work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-task-name.md` if none exists.
 ```
 
 ### 2. Audit docs vs code
@@ -132,4 +131,4 @@ When `/docs sync` completes, return all of:
 
 3. **Summary** — counts by status (stale fixed, partial filled, undocumented created, roadmap updated)
 4. **Docs changes made** — list updated/created/moved paths, or `none`
-5. **Log entry** — append to an existing log for the same scope of work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-sync.md` if none exists. Captures what was synced, key findings, and decisions
+5. **Log entry** — append to a same-day log for the same work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-sync.md` if none exists. Captures what was synced, key findings, and decisions

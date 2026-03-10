@@ -79,4 +79,4 @@ When `/docs research` completes, return all of:
 2. **Recommended item** (`#<n>` + one-sentence reason)
 3. If formalized: **roadmap doc path**, **open questions**
 4. **Next command** suggestion (`/docs work <path>` or another `/docs research` for a different domain)
-5. **Log entry** — append to an existing log for the same scope of work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-research-<topic>.md` if none exists. Captures what was investigated, candidates considered, and the recommendation rationale
+5. **Log entry** — append to a same-day log for the same work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-research-<topic>.md` if none exists. Captures what was investigated, candidates considered, and the recommendation rationale

@@ -49,12 +49,14 @@ Project memory system. Pick an action:
 3. **Naming + date rules**
    - `reference/*` → `kebab-case.md`
    - `roadmap/**`, `decisions/` → `YYYY-MM-DD-kebab-case.md`
-   - `logs/` → `YYYY-MM-DD-kebab-task-name.md` — one log per scope of work. Append sections for subsequent iterations instead of creating new files.
+   - `logs/` → `YYYY-MM-DD-kebab-task-name.md` — one log per day per scope of work. Same-day iterations on the same work append as sections; a new day always starts a new file.
    - Dates must be zero-padded ISO 8601: `YYYY-MM-DD`.
-4. **Append-only history** — for `decisions/` and `retros/`, add new files instead of rewriting history. For `logs/`, append new sections to an existing log file for the same scope of work rather than creating a new file (see rule 5).
-5. **Log after every complete piece of work** — whenever an agent finishes substantial work (pushing a PR, completing a sync, finalizing a research recommendation, shipping a feature), log what was done. **One log file per scope of work:**
-   - **On a feature branch**: search only the last 10 files in `.docs/logs/` (by name, descending) for an existing log matching this branch's work. If found, **append a new `---` divider and dated section** (e.g., `## Review Followup — YYYY-MM-DD`). If not found, create `.docs/logs/YYYY-MM-DD-kebab-task-name.md`.
-   - **On the default branch (main/master)**: create a new log file — each session is its own scope.
+4. **Append-only history** — for `decisions/` and `retros/`, add new files instead of rewriting history. For `logs/`, same-day iterations on the same work append sections to the existing file (see rule 5).
+5. **Log after every complete piece of work** — whenever an agent finishes substantial work (pushing a PR, completing a sync, finalizing a research recommendation, shipping a feature), log what was done. **One log file per day per scope of work:**
+   - Search today's files in `.docs/logs/` (matching today's `YYYY-MM-DD` prefix) for an existing log matching this work.
+   - If a same-day log exists, **append a new `---` divider and section** to it.
+   - If no same-day log exists, create `.docs/logs/YYYY-MM-DD-kebab-task-name.md`.
+   - Never append to a log from a previous day — always create a new file.
    - Each section captures what was done, decisions made, and rationale — so every developer can reconstruct what agents did and why.
 6. **Roadmap status lifecycle** — track status by moving docs between roadmap folders:
    - `proposed/` → `in-progress/` → `completed/`
