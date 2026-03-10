@@ -48,10 +48,13 @@ Match the first argument to the corresponding section below.
 3. **Naming + date rules**
    - `reference/*` → `kebab-case.md`
    - `roadmap/**`, `decisions/` → `YYYY-MM-DD-kebab-case.md`
-   - `logs/` → `YYYY-MM-DD-kebab-task-name.md` per-task logs
+   - `logs/` → `YYYY-MM-DD-kebab-task-name.md` — one log per scope of work. Append sections for subsequent iterations instead of creating new files.
    - Dates must be zero-padded ISO 8601: `YYYY-MM-DD`.
-4. **Append-only history** — for `logs/` and `decisions/`, add new files instead of rewriting history.
-5. **Log after every complete piece of work** — whenever an agent finishes substantial work (pushing a PR, completing a sync, finalizing a research recommendation, shipping a feature), create a log entry at `.docs/logs/YYYY-MM-DD-kebab-task-name.md`. The log captures what was done, decisions made, and rationale — so every developer in the repo can reconstruct what agents did and why.
+4. **Append-only history** — for `decisions/`, add new files instead of rewriting history. For `logs/`, append new sections to an existing log file for the same scope of work rather than creating a new file (see rule 5).
+5. **Log after every complete piece of work** — whenever an agent finishes substantial work (pushing a PR, completing a sync, finalizing a research recommendation, shipping a feature), log what was done. **One log file per scope of work:**
+   - **On a feature branch**: search only the last 10 files in `.docs/logs/` (by name, descending) for an existing log matching this branch's work. If found, **append a new `---` divider and dated section** (e.g., `## Review Followup — YYYY-MM-DD`). If not found, create `.docs/logs/YYYY-MM-DD-kebab-task-name.md`.
+   - **On the default branch (main/master)**: create a new log file — each session is its own scope.
+   - Each section captures what was done, decisions made, and rationale — so every developer can reconstruct what agents did and why.
 6. **Roadmap status lifecycle** — track status by moving docs between roadmap folders:
    - `proposed/` → `in-progress/` → `completed/`
    - Items that won't be built go to `archived/` with a note explaining why (superseded, rejected, deprioritized)
@@ -105,7 +108,7 @@ Runs every sync to keep the folder structure intact. Idempotent — creates what
 
 3. If `AGENTS.md` and/or `CLAUDE.md` exist but lack docs guidance, add a brief section:
    - `.docs/` is the project memory system. See `.docs/README.md` for conventions.
-   - After substantial work (PR, feature, refactor), log what you did and why to `.docs/logs/YYYY-MM-DD-task-name.md`.
+   - After substantial work, append to an existing log for the same scope of work (see Global Rule 5) (or create `.docs/logs/YYYY-MM-DD-task-name.md` if none exists).
 
 ### 2. Audit docs vs code
 
@@ -150,7 +153,7 @@ When `/docs sync` completes, return all of:
 
 3. **Summary** — counts by status (stale fixed, partial filled, undocumented created, roadmap updated)
 4. **Docs changes made** — list updated/created/moved paths, or `none`
-5. **Log entry** — create `.docs/logs/YYYY-MM-DD-sync.md` capturing what was synced, key findings, and decisions
+5. **Log entry** — append to an existing log for the same scope of work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-sync.md` if none exists. Captures what was synced, key findings, and decisions
 
 ---
 
@@ -235,7 +238,7 @@ When `/docs research` completes, return all of:
 2. **Recommended item** (`#<n>` + one-sentence reason)
 3. If formalized: **roadmap doc path**, **open questions**
 4. **Next command** suggestion (`/docs work <path>` or another `/docs research` for a different domain)
-5. **Log entry** — create `.docs/logs/YYYY-MM-DD-research-<topic>.md` capturing what was investigated, candidates considered, and the recommendation rationale
+5. **Log entry** — append to an existing log for the same scope of work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-research-<topic>.md` if none exists. Captures what was investigated, candidates considered, and the recommendation rationale
 
 ---
 
@@ -269,7 +272,7 @@ After implementation is complete:
 
 - **Update reference docs** — create or update `.docs/reference/` docs to reflect the new code (features, architecture, conventions, runbooks, pitfalls as appropriate)
 - **Update roadmap doc** — move to `completed/` and update `## Status` to `Completed (YYYY-MM-DD)`, or move to `completed/` with `Partially Completed (YYYY-MM-DD)` and notes on what remains
-- **Log entry** — create `.docs/logs/YYYY-MM-DD-kebab-task-name.md` capturing what was done, key decisions made, and why
+- **Log entry** — append to an existing log for the same scope of work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-kebab-task-name.md` if none exists. Captures what was done, key decisions made, and why
 
 ### Output Contract (required)
 
