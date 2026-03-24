@@ -10,7 +10,7 @@ Fully map the codebase into `.docs/reference/`. Also update roadmap statuses for
 
 Runs every sync to keep the folder structure intact. Idempotent — creates what's missing, leaves everything else alone. Never overwrites or removes existing files or folders.
 
-1. Ensure all folders exist (create any that are missing):
+1. Ensure all folders exist (create any that are missing) and add a `.gitkeep` to every leaf directory that contains no other files, so the full tree is tracked by git. Never overwrite existing `.gitkeep` files or add `.gitkeep` to directories that already have content.
 
 ```
 .docs/
