@@ -1,7 +1,7 @@
 ---
 name: docs
-description: "Project docs system: sync codebase to docs, research what to build next, work on a roadmap item, or retro on past work."
-argument-hint: <sync|research|work|retro> [topic or doc path]
+description: "Project docs system: sync codebase to docs, research what to build next, or retro on past work."
+argument-hint: <sync|research|retro> [topic or doc path]
 ---
 
 # Docs
@@ -10,7 +10,6 @@ Project memory system. Pick an action:
 
 - **`/docs sync`** — Map codebase to references, update roadmap statuses. Use `/docs sync structure` to only rebuild the folder layout.
 - **`/docs research`** — Discover and formalize what to build next into a roadmap doc
-- **`/docs work`** — Execute a roadmap item, then update references
 - **`/docs retro`** — Analyze logs and decisions over a time period for patterns, wins, and recurring issues
 
 ## Core Model
@@ -28,7 +27,7 @@ Project memory system. Pick an action:
 
 ## Global Rules (required)
 
-1. **Command contract** — only `sync`, `research`, `work`, `retro`.
+1. **Command contract** — only `sync`, `research`, `retro`.
 2. **Docs root + folder contract** — this skill manages `.docs/` with only these top-level folders:
    - `.docs/reference/`
    - `.docs/roadmap/`
@@ -82,7 +81,6 @@ Each command's full specification lives in its own file under `references/`:
 
 - **`sync`** — [references/sync.md](references/sync.md)
 - **`research`** — [references/research.md](references/research.md)
-- **`work`** — [references/work.md](references/work.md)
 - **`retro`** — [references/retro.md](references/retro.md)
 
 Match the first argument to the corresponding reference file and follow its instructions.

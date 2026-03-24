@@ -6,7 +6,7 @@ Skills for AI coding agents.
 
 | Skill | Description | Install |
 |---|---|---|
-| [docs](skills/docs) | Project memory system — sync codebase to docs, research what to build next, work on roadmap items | `npx skills add donutdaniel/agent-skills --skill docs` |
+| [docs](skills/docs) | Project memory system — sync codebase to docs, research what to build next, and retro on past work | `npx skills add donutdaniel/agent-skills --skill docs` |
 
 ## Install
 

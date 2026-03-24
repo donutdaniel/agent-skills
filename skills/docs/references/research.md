@@ -78,5 +78,5 @@ When `/docs research` completes, return all of:
 1. **Shortlist table** (3-5 rows)
 2. **Recommended item** (`#<n>` + one-sentence reason)
 3. If formalized: **roadmap doc path**, **open questions**
-4. **Next command** suggestion (`/docs work <path>` or another `/docs research` for a different domain)
+4. **Next step** suggestion (implement from the roadmap doc path, then run `/docs sync`, or run another `/docs research` for a different domain)
 5. **Log entry** — append to a same-day log for the same work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-research-<topic>.md` if none exists. Captures what was investigated, candidates considered, and the recommendation rationale

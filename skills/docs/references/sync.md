@@ -74,7 +74,6 @@ Project memory system. Code is ground truth — these docs capture context that 
 Managed via `/docs` skill:
 - `/docs sync` — Map codebase to references, update roadmap statuses
 - `/docs research` — Discover what to build next, formalize into roadmap
-- `/docs work` — Execute a roadmap item, then update references
 - `/docs retro` — Look back over a time period for patterns and insights
 ````
 
@@ -83,7 +82,7 @@ Managed via `/docs` skill:
 ```
 ## Project Memory
 
-`.docs/` is the project memory system — see `.docs/README.md` for conventions. Use the `/docs` skill to manage it (`sync`, `research`, `work`, `retro`). After substantial work, append to a same-day log for the same work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-task-name.md` if none exists.
+`.docs/` is the project memory system — see `.docs/README.md` for conventions. Use the `/docs` skill to manage it (`sync`, `research`, `retro`). After substantial work, append to a same-day log for the same work (see Global Rule 5), or create `.docs/logs/YYYY-MM-DD-task-name.md` if none exists.
 ```
 
 ### 2. Audit docs vs code
